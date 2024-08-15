@@ -42,7 +42,7 @@ public class TwitterService {
             TwitterClient client = new TwitterClient(credentials);
 
             // Step 2: Get message for tweeting
-            int index = (int)Math.ceil(Math.random() * CommonConstants.emojis.size());
+            int index = (int)Math.floor(Math.random() * CommonConstants.emojis.size());
             String tweetText = Messages.RAKUTEN_REFERRAL_TWEET.getMessage().replace("${emoji}", CommonConstants.emojis.get(index));
 
             // Step 3: Call `Tweet` API to post a tweet
