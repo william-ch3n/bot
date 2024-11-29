@@ -13,7 +13,15 @@ public class RakutenMobileReferralTask {
 
     private final TwitterService twitterService;
 
-    @Scheduled(cron="0 0 * * * ?")
+    /**
+     * running at 0 minute past every 2 hours as the new rate limit is 500 post/month and 17 post/hour
+     * ref:
+     *  https://developer.x.com/en/docs/x-api/rate-limits
+     *
+     * e.g. for crontab:
+     *  16:00, 18:00, 20:00
+     */
+    @Scheduled(cron="0 */2 * * * ?")
     public void postReferralInfo() {
         twitterService.tweet();
     }

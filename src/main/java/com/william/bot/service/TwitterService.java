@@ -40,6 +40,8 @@ public class TwitterService {
                     .accessToken(accessKey)
                     .accessTokenSecret(accessKeySecret).build();
             TwitterClient client = new TwitterClient(credentials);
+            // turn off auto re-try for "rate limit exceeded exception" otherwise it will keep retrying...
+            client.setAutomaticRetry(false);
 
             // Step 2: Get message for tweeting
             int index = (int)Math.floor(Math.random() * CommonConstants.emojis.size());
