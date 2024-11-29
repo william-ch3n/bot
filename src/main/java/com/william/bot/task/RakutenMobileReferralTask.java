@@ -20,8 +20,12 @@ public class RakutenMobileReferralTask {
      *
      * e.g. for crontab:
      *  16:00, 18:00, 20:00
+     *
+     * spring crontab format:
+     * second, minute, hour, day of month, month, day of week
+     *
      */
-    @Scheduled(cron="0 */2 * * * ?")
+    @Scheduled(cron="0 0 */2 * * ?")
     public void postReferralInfo() {
         twitterService.tweet();
     }
